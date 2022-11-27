@@ -53,19 +53,25 @@ void PrintArray1(int[] massiv)
 
 }
 
-int[,] array = FillArray(row, column);
-PrintArray(array);
+int[,] array = FillArray(row, column); //Создали массив из случайных чисел, и присвоили array
+PrintArray(array);// выывели на печать сформированный массив
 Console.WriteLine();
-Console.WriteLine("Сумма элементов строки");
-int[] masLin1 = MasSum(array);
-// PrintArray1(masLin1);
+Console.WriteLine("Сумма элементов строки каждой строки");
+int[] masLin1 = MasSum(array); // сформировали массив для сумм каждой строки
+Console.WriteLine("Сформирован одномерный массив: ");
+PrintArray1(masLin1); // выводим массив для поиска минимального элемента
+
 Console.WriteLine();
+// int  elMinStr=FindMinStr(masLin1); //вызов функции поиска строки с минимальной суммой строки
+// PrintArray1(elMinStr); //выводим массив из двух элементов индекса и суммы
+
 
 //Поиск суммы строк. возвращает массив сумм строк
 
 int[] MasSum(int[,] massiv)
-{
-    int[] masLin = new int[row + 1];
+{   int[] masLin = new int[row];  
+
+    {    
     for (int i = 0; i < row; i++)
     {
         int j = 0;
@@ -77,26 +83,25 @@ int[] MasSum(int[,] massiv)
         Console.WriteLine(sum);
         masLin[i] = sum;
     }
+    }
     return masLin;
 }
 
-int [] FindMinStr(int []array1)
+
+int  FindMinStr(int [] masLin1)
 {
-int minSumStr = array1[0];
+int min = masLin1[0];
 int index=0;
-int [] printMasiv=new int[2];
-for (int k = 0; k < row - 1; k++)
+for (int i = 1; i<masLin1.Length; i++)
 {
-    if (minSumStr > array1[k + 1])
+    if (masLin1[i]<min)
     {
-        minSumStr = array1[k + 1];
-       printMasiv[1]=k+1;
-        printMasiv[0]=minSumStr;
-        // Console.WriteLine(k);
-        // Console.WriteLine(array1[k + 1]);
+         index=i;
+        min = masLin1[i];      
+    
     }
 }
-return printMasiv;
+return index;
 
 }
   Console.WriteLine();

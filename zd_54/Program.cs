@@ -58,7 +58,7 @@ int [,] SortMassiv(int [,] massiv)
             { int j=0;
                 for ( j=0; j<column-1; j++)
                 {
-                    if (massiv[i,j]>massiv[i,j+1])
+                    if (massiv[i,j]<massiv[i,j+1])
                     {
                         int temp = massiv[i, j+1];
                         massiv[i,j+1]=massiv[i,j];
